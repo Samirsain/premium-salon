@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Framer breakpoints: tablet 810px, desktop 1200px */
+@theme {
+  --breakpoint-md: 810px;
+  --breakpoint-lg: 1200px;
+
+  --color-bg: #fdf7ef;
+  --color-card: #f7ecdf;
+  --color-cream: #fffdf9;
+  --color-head: #633b2c;
+  --color-body: #7a685d;
+  --color-accent: #986a3e;
+  --color-tag: #70441b;
+  --color-dark: #261813;
+
+  --font-sans: "General Sans", Arial, sans-serif;
+  --font-serif: var(--font-hedvig), "Times New Roman", serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base element styles live in the base layer so Tailwind utilities (text-white etc.) can override them. */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--color-head);
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+/* Heading scale (desktop / tablet / mobile), taken from the Framer breakpoints */
+.t-90 { font-size: 42px; line-height: 1.1; }
+.t-70 { font-size: 38px; }
+.t-60 { font-size: 32px; }
+.t-46 { font-size: 28px; }
+.t-30 { font-size: 22px; }
+.t-26 { font-size: 21px; }
+.t-22 { font-size: 19px; }
+@media (min-width: 810px) {
+  .t-90 { font-size: 70px; }
+  .t-70 { font-size: 56px; }
+  .t-60 { font-size: 44px; }
+  .t-46 { font-size: 32px; }
+  .t-30 { font-size: 26px; }
+  .t-26 { font-size: 21px; }
+  .t-22 { font-size: 20px; }
+}
+@media (min-width: 1200px) {
+  .t-90 { font-size: 90px; }
+  .t-70 { font-size: 70px; }
+  .t-60 { font-size: 60px; }
+  .t-46 { font-size: 46px; }
+  .t-30 { font-size: 30px; }
+  .t-26 { font-size: 26px; }
+  .t-22 { font-size: 22px; }
+}
+.t-18 { font-size: 16px; }
+@media (min-width: 810px) {
+  .t-18 { font-size: 18px; }
+}
+
+/* Frosted brown info card used on top of photos */
+.glass {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(152, 106, 62, 0.5));
+  color: #fff;
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(152, 106, 62, 0.5), rgba(152, 106, 62, 0.6));
+  opacity: 0.6;
+  pointer-events: none;
+}
+.glass > * {
+  position: relative;
+}
+
+/* Rich text from the CMS (blog posts, services, legal pages) */
+.prose-cms h2 {
+  font-size: 26px;
+  margin: 40px 0 20px;
+}
+.prose-cms h2:first-child {
+  margin-top: 0;
+}
+.prose-cms h3 {
+  font-size: 22px;
+  margin: 30px 0 14px;
+}
+.prose-cms p {
+  margin-bottom: 20px;
+}
+.prose-cms ul,
+.prose-cms ol {
+  margin: 0 0 20px 20px;
+  list-style: disc;
+}
+.prose-cms ol {
+  list-style: decimal;
+}
+.prose-cms li p {
+  margin: 0;
+}
+.prose-cms strong {
+  color: var(--color-head);
+  font-weight: 600;
+}
+.prose-cms a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+@media (min-width: 810px) {
+  .prose-cms h2 {
+    font-size: 32px;
+  }
+}
+
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-y {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
