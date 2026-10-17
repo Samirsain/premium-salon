@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/motion";
 import { icons, img } from "@/lib/site";
 
-// 18 pills around a ring that slowly spins (one turn every 80s, as in the Framer original).
+// 18 pills around a ring that slowly spins (one turn every 80s).
 const pills = [
   ["Acne & Skin Health", "Jvm6ENMcLTrn2S9rqOPXlCQ538M.jpg"],
   ["Chemical Peels", "jSFZ7ROTAOOS0hkJqlUtWsKmKe8.jpg"],

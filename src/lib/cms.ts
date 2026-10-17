@@ -1,4 +1,4 @@
-// Exported from the Framer CMS (Service, Blog and Legal Pages collections).
+// Site content: services, blog posts and legal pages.
 
 export const services = [
   {

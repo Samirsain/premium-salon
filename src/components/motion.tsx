@@ -3,7 +3,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 
-// Framer's appear effect for this template: fade in, slide up 80px, scale from 0.9.
+// Appear effect: fade in, slide up 80px, scale from 0.9.
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Reveal({
