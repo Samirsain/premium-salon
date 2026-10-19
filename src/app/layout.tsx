@@ -22,9 +22,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={hedvig.variable}>
-      <body className="overflow-x-clip">
+      <body>
         <Header />
-        <main>{children}</main>
+        {/* Clip here, not on body: body overflow propagates to the viewport, which mobile browsers ignore. */}
+        <main className="overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>
